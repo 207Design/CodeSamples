@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketPortals", "PocketPortals.csproj", "{36BE30C6-158F-DA27-874C-B58291641253}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketPortals.Editor", "PocketPortals.Editor.csproj", "{B7F8DEC3-C0D6-3FE2-5940-A46CDE5181A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36BE30C6-158F-DA27-874C-B58291641253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BE30C6-158F-DA27-874C-B58291641253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BE30C6-158F-DA27-874C-B58291641253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BE30C6-158F-DA27-874C-B58291641253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F8DEC3-C0D6-3FE2-5940-A46CDE5181A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F8DEC3-C0D6-3FE2-5940-A46CDE5181A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F8DEC3-C0D6-3FE2-5940-A46CDE5181A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F8DEC3-C0D6-3FE2-5940-A46CDE5181A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
