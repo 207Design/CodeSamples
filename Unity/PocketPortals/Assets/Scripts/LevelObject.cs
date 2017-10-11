@@ -31,12 +31,13 @@ public class LevelObject : MonoBehaviour {
         puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
 		ConfigLevel ();
 	}
-		
 
-	// Begin summary
-	// Instantiate puzzle pieces based on configData
-	// End summary
-	public void ConfigLevel() {
+
+    // Begin summary
+    // Instantiate puzzle pieces based on configData
+    // End summary
+    public void ConfigLevel()
+    {
         for (int i = 0; i < configData.StartPieces.Length; i++)
         {
             nextPuzzleID += 1;
@@ -87,7 +88,11 @@ public class LevelObject : MonoBehaviour {
             tutorial.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        puzzleManager.LevelSetupDone(pieceList);
+        // Will not trigger if using editor script for spawning pieces when not in runtime to check level layouts
+        if (Application.isPlaying)
+        {
+            puzzleManager.LevelSetupDone(pieceList);
+        }
     }
 }
 
