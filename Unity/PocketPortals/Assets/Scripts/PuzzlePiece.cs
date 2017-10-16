@@ -46,7 +46,7 @@ public class PuzzlePiece : MonoBehaviour {
         if (puzzleManager == null) {
             puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
         }
-		MeshRenderer[] wallRenderers = transform.FindChild ("Walls").GetComponentsInChildren<MeshRenderer> ();
+		MeshRenderer[] wallRenderers = transform.Find ("Walls").GetComponentsInChildren<MeshRenderer> ();
 		for (int i = 0; i < wallRenderers.Length; i++) {
 			if (wallRenderers [i].gameObject.CompareTag ("wallBack") == false) {
 				wallRenderers [i].material = puzzleManager.staticWallMaterial;
