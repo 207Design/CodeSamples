@@ -41,7 +41,7 @@ namespace Manager
         GameObject backgroundTilesParent;
 
         int selectedTileType;
-        Vector2 selectedGridPTile;
+        Vector2 selectedGridTile;
 
         Vector2 gridSize = new Vector2(8, 6);
 
@@ -204,7 +204,7 @@ namespace Manager
                     {
                         // Select a first tile and store tile type and position
                         selectedTileType = _tile.TileType;
-                        selectedGridPTile = _tile.GridPosition;
+                        selectedGridTile = _tile.GridPosition;
                         _tile.SelectTile();
                         selectedTiles.Add(_tile);
 
@@ -242,7 +242,7 @@ namespace Manager
                             PlayableTile _previousTileObject = selectedTiles[selectedTiles.Count - 1];
                             _previousTileObject.DeselectTile();
                             selectedTiles.Remove(_previousTileObject);
-                            selectedGridPTile = _tile.GridPosition;
+                            selectedGridTile = _tile.GridPosition;
 
                             HighlightBackgroundTile();
 
@@ -262,15 +262,14 @@ namespace Manager
         // </summary>
         private bool TileIsAdjecent(Vector2 gridPosition)
         {
-            for (int i = 0; i < 8; i++)
+            if (gridPosition.x <= selectedGridTile.x + 1 && gridPosition.x >= selectedGridTile.x - 1 && gridPosition.y <= selectedGridTile.y + 1 && gridPosition.y >= selectedGridTile.y - 1)
             {
-                if (selectedGridPTile + gridMath[i] == gridPosition)
-                {
-                    selectedGridPTile = gridPosition;
-                    return true;
-                }
+                selectedGridTile = gridPosition;
+                return true;
             }
-            return false;
+            else {
+                return false;
+            }
         }
 
         // <summary>
@@ -280,7 +279,7 @@ namespace Manager
         {
             if (canSelectTiles)
             {
-                if (selectedTiles.Count != 0)
+                if (selectedTiles.Count > 0)
                 {
                     if (selectedTiles.Count > 2)
                     {
@@ -426,8 +425,8 @@ namespace Manager
             {
                 previousBackgroundTile.SetTileData(backgroundNotSelected);
             }
-            activeBackgroundTiles[(int)selectedGridPTile.x, (int)selectedGridPTile.y].SetTileData(backgroundSelected);
-            previousBackgroundTile = activeBackgroundTiles[(int)selectedGridPTile.x, (int)selectedGridPTile.y];
+            activeBackgroundTiles[(int)selectedGridTile.x, (int)selectedGridTile.y].SetTileData(backgroundSelected);
+            previousBackgroundTile = activeBackgroundTiles[(int)selectedGridTile.x, (int)selectedGridTile.y];
         }
     }
 }
