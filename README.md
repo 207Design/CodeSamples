@@ -5,7 +5,7 @@ The repository contains a selection of projects that I would like to share as a 
 
 -----
 
-* Pocket Portals
+* Pocket Portals (Unity 2017.1.2f1)
 
 Unity project. A small puzzle game with five levels where the user should lead cubes from start to finish by moving around available teleporters.
 
