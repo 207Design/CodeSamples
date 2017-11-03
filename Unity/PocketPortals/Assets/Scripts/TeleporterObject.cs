@@ -10,6 +10,18 @@ public class TeleporterObject : MonoBehaviour {
     [SerializeField]
     int roomID;
 
+    public int RoomID
+    {
+        get
+        {
+            return roomID;
+        }
+        set
+        {
+            roomID = value;
+        }
+    }
+
     PuzzleManager puzzleManager;
 
     [SerializeField]
@@ -112,26 +124,11 @@ public class TeleporterObject : MonoBehaviour {
         List<GameObject> allTeleporters = puzzleManager.GetAvailableTeleporters();
         for (int i = 0; i < allTeleporters.Count; i++)
         {
-            if (roomID != allTeleporters[i].GetComponent<TeleporterObject>().ReturnRoomID())
+            if (roomID != allTeleporters[i].GetComponent<TeleporterObject>().RoomID)
             {
                 targets.Add(allTeleporters[i]);
             }
         }
-    }
-
-    // Begin summary
-    // Return current room ID to caller
-    // End summary
-    public int ReturnRoomID() {
-            return roomID;
-    }
-
-    // Begin summary
-    // Set roomID
-    // End summary
-    public void SetRoomID(int id)
-    {
-        roomID = id;
     }
 
     // Begin summary

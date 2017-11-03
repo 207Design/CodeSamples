@@ -20,6 +20,9 @@ public class TutorialAnimation : MonoBehaviour {
 		}
 	}
 
+    // Begin summary
+    // Set particles to play
+    // End summary
 	public void ToggleParticles() {
 		particleLifeTime = particles.main.duration;
 		particles.Play ();

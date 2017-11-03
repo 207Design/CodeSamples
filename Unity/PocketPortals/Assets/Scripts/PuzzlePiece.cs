@@ -11,6 +11,13 @@ public class PuzzlePiece : MonoBehaviour {
 
     int puzzlePieceID;
 
+    public int PuzzlePieceID {
+        set
+        {
+            puzzlePieceID = value;
+        }
+    }
+
     void Start() {
         puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
     }
@@ -28,7 +35,7 @@ public class PuzzlePiece : MonoBehaviour {
 				GameObject spawnedTeleport = Instantiate (teleportObjectPrefab, child.position, child.rotation);
 				spawnedTeleport.transform.SetParent (child);
 
-                spawnedTeleport.GetComponent<TeleporterObject>().SetRoomID(puzzlePieceID);
+                spawnedTeleport.GetComponent<TeleporterObject>().RoomID = puzzlePieceID;
                 puzzleManager.AddAvailableTeleport(spawnedTeleport);
             }
 		}
@@ -55,11 +62,4 @@ public class PuzzlePiece : MonoBehaviour {
 			}
 		}
 	}
-
-    // Begin summary
-    // Set puzzle piece ID
-    // End summary
-    public void SetPuzzleID(int id) {
-        puzzlePieceID = id;
-    }
 }

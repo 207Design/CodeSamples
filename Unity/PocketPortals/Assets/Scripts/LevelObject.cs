@@ -45,7 +45,7 @@ public class LevelObject : MonoBehaviour {
             puzzlePiece.transform.SetParent(transform);
             pieceList.Add(puzzlePiece);
             puzzlePieceScript = puzzlePiece.GetComponent<PuzzlePiece>();
-            puzzlePieceScript.SetPuzzleID(nextPuzzleID);
+            puzzlePieceScript.PuzzlePieceID = nextPuzzleID;
             puzzlePieceScript.SetupRoom();
         }
 
@@ -56,7 +56,7 @@ public class LevelObject : MonoBehaviour {
             puzzlePiece.transform.SetParent(transform);
             pieceList.Add(puzzlePiece);
             puzzlePieceScript = puzzlePiece.GetComponent<PuzzlePiece>();
-            puzzlePieceScript.SetPuzzleID(nextPuzzleID);
+            puzzlePieceScript.PuzzlePieceID = nextPuzzleID;
             puzzlePieceScript.SetupRoom();
         }
 
@@ -77,7 +77,7 @@ public class LevelObject : MonoBehaviour {
 
             pieceList.Add(puzzlePiece);
             puzzlePieceScript = puzzlePiece.GetComponent<PuzzlePiece>();
-            puzzlePieceScript.SetPuzzleID(nextPuzzleID);
+            puzzlePieceScript.PuzzlePieceID = nextPuzzleID;
             puzzlePieceScript.SetupRoom();
         }
 

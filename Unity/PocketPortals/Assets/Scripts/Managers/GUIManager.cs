@@ -115,7 +115,6 @@ public class GUIManager : MonoBehaviour {
 			buttonWinscreenNext.GetComponent<Animator>().SetBool("enable", nextLevelButton);
 		} else {
 			buttonWinscreenNext.GetComponent<Animator>().SetBool("enable", win);
-			//buttonWinscreenNext.SetActive (false);
 		}
 
 		buttonOptions.SetActive (options);

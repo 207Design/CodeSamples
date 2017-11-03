@@ -14,8 +14,19 @@ public class MoveablePiece : MonoBehaviour{
 	[SerializeField]
 	GameObject GUICanvas;
 
-	[HideInInspector]
-	public bool moveable;
+	bool moveable;
+
+    public bool Moveable
+    {
+        get
+        {
+            return moveable;
+        }
+        set
+        {
+            moveable = value;
+        }
+    }
 
 	public enum overrideMovement {noRestrictions, noMovement};
 	public overrideMovement restrictions = overrideMovement.noRestrictions;
@@ -220,11 +231,4 @@ public class MoveablePiece : MonoBehaviour{
 			isColliding = false;
 		}
 	}
-
-    // Begin summary
-    // Set moveable variable of this object
-    // End summary
-    public void SetMoveable(bool status) {
-        moveable = status;
-    }
 }

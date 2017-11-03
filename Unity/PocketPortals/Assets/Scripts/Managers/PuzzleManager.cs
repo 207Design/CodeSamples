@@ -80,7 +80,7 @@ public class PuzzleManager : MonoBehaviour {
             for (int i = 0; i < startPoints.Length; i++)
             {
                 GameObject spawnedPlayerObject = Instantiate(playerObject, startPoints[i].transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                spawnedPlayerObject.GetComponent<PlayerObjectMovement>().SetStartPos(startPoints[i].transform);
+                spawnedPlayerObject.GetComponent<PlayerObjectMovement>().StartTransform = startPoints[i].transform;
 
                 playerObjects.Add(spawnedPlayerObject);
                 playerObjectInGoal.Add(false);
@@ -119,7 +119,7 @@ public class PuzzleManager : MonoBehaviour {
         {
             if (puzzlePieces[x].GetComponent<MoveablePiece>())
             {
-                puzzlePieces[x].GetComponent<MoveablePiece>().SetMoveable(false);
+                puzzlePieces[x].GetComponent<MoveablePiece>().Moveable = false;
             }
         }
     }

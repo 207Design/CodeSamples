@@ -8,13 +8,21 @@ public class PlayerObjectMovement : MonoBehaviour {
 
 	Transform startTransform;
 
+    public Transform StartTransform
+    {
+        set
+        {
+            startTransform = value;
+        }
+    }
+
     PuzzleManager puzzleManager;
 
 	// Time for lowVelocity and for lerping
 	float lowVelocityTime;
 	float moveTime = 0;
 
-	// Move to end
+	// Move to end variables
 	bool moveToPos = false;
 	Vector3 endPos;
 	Vector3 currentPos;
@@ -95,14 +103,6 @@ public class PlayerObjectMovement : MonoBehaviour {
 			isMoving = false;
 		}
 	}
-
-    // Begin summary
-    // Set the start transform of the player object
-    // End summary
-    public void SetStartPos(Transform start)
-    {
-        startTransform = start;
-    }
 
     // Begin summary
     // Enable collider and rigid body gravity on the player object
