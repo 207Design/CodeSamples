@@ -593,7 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14c477fa69b8694ca38fac9cfb289c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableAudioClips: 0
   selected: {fileID: 8300000, guid: 526916a3c37dd2141848583f874f18b8, type: 3}
   deselected: {fileID: 8300000, guid: 6ad23c31c5037424bac6eb7e880ad3ed, type: 3}
   collected: {fileID: 8300000, guid: 900d2411ccf82a94f863af484200d5e8, type: 3}
@@ -675,7 +674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1737,7 +1736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2682,7 +2681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c22314d83a01c4794c14af0c94a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   multiplierText: {fileID: 275000941}
   multiplierLevels: 0400000006000000090000000c00000010000000
 --- !u!4 &1267143208

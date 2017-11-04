@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Manager;
 
 namespace Tile
 {
-    public class PlayableTile : MonoBehaviour
+    public class PlayableTile : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
     {
 
         BoardManager boardManager;
@@ -59,6 +60,25 @@ namespace Tile
             scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
             canvas.worldCamera = Camera.main;
             canvas.gameObject.SetActive(false);
+        }
+
+        // <summary>
+        // On Pointer down, tell board manager that this wile wants to be selected
+        // </summary>
+        public void OnPointerDown(PointerEventData pointerEventData)
+        {
+            boardManager.SelectTile(gameObject);
+        }
+
+        // <summary>
+        // On Pointer enter, tell board manager that this wile wants to be selected
+        // </summary>
+        public void OnPointerEnter(PointerEventData pointerEventData)
+        {
+            if (Input.GetMouseButton(0) || Input.touchCount > 0)
+            {
+                boardManager.SelectTile(gameObject);
+            }
         }
 
         // <summary>

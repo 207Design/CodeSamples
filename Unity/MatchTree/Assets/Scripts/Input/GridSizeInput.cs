@@ -63,6 +63,7 @@ namespace GameMenu
             currentYValue = minY;
             yText.text = currentYValue.ToString();
 
+            gridSize = new Vector2(currentXValue, currentYValue);
             CheckButtonViability("x");
             CheckButtonViability("y");
         }
