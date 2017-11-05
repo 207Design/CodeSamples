@@ -193,20 +193,19 @@ namespace Manager
         // <summary>
         // Tile that should be selected or deselected based on input
         // </summary>
-        public void SelectTile(GameObject tile)
+        public void SelectTile(PlayableTile tile)
         {
             if (canSelectTiles)
             {
-                PlayableTile _tile = tile.GetComponent<PlayableTile>();
-                if (selectedTiles.Contains(_tile) == false)
+                if (selectedTiles.Contains(tile) == false)
                 {
                     if (selectedTiles.Count == 0)
                     {
                         // Select a first tile and store tile type and position
-                        selectedTileType = _tile.TileType;
-                        selectedGridTile = _tile.GridPosition;
-                        _tile.SelectTile();
-                        selectedTiles.Add(_tile);
+                        selectedTileType = tile.TileType;
+                        selectedGridTile = tile.GridPosition;
+                        tile.SelectTile();
+                        selectedTiles.Add(tile);
 
                         HighlightBackgroundTile();
 
@@ -215,13 +214,13 @@ namespace Manager
                     }
                     else
                     {
-                        if (_tile.TileType == selectedTileType)
+                        if (tile.TileType == selectedTileType)
                         {
-                            if (TileIsAdjecent(_tile.GridPosition))
+                            if (TileIsAdjecent(tile.GridPosition))
                             {
                                 // Select a tile adjecent to the previously selected one, and store tile position
-                                _tile.SelectTile();
-                                selectedTiles.Add(_tile);
+                                tile.SelectTile();
+                                selectedTiles.Add(tile);
 
                                 HighlightBackgroundTile();
 
@@ -236,13 +235,13 @@ namespace Manager
                 {
                     if (selectedTiles.Count > 1)
                     {
-                        if (_tile == selectedTiles[selectedTiles.Count - 2])
+                        if (tile == selectedTiles[selectedTiles.Count - 2])
                         {
                             // A tile is deselected
                             PlayableTile _previousTileObject = selectedTiles[selectedTiles.Count - 1];
                             _previousTileObject.DeselectTile();
                             selectedTiles.Remove(_previousTileObject);
-                            selectedGridTile = _tile.GridPosition;
+                            selectedGridTile = tile.GridPosition;
 
                             HighlightBackgroundTile();
 

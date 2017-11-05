@@ -67,7 +67,7 @@ namespace Tile
         // </summary>
         public void OnPointerDown(PointerEventData pointerEventData)
         {
-            boardManager.SelectTile(gameObject);
+            boardManager.SelectTile(this);
         }
 
         // <summary>
@@ -77,7 +77,7 @@ namespace Tile
         {
             if (Input.GetMouseButton(0) || Input.touchCount > 0)
             {
-                boardManager.SelectTile(gameObject);
+                boardManager.SelectTile(this);
             }
         }
 
