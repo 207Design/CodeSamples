@@ -10,6 +10,9 @@ namespace Manager
         GameManager gameManager;
 
         [SerializeField]
+        BoardManager boardManager;
+
+        [SerializeField]
         GameObject backgroundTilePrefab;
 
         [SerializeField]
@@ -40,12 +43,13 @@ namespace Manager
         {
             if (playablePoolParent == null)
             {
-                playablePoolParent = CreateFolder("PlayablePoolParent", transform);
+                playablePoolParent = boardManager.ActiveTilesParent;
             }
             int _poolSize = ((int)gridSize.x + 4) * ((int)gridSize.y);
             for (int i = playableTilesPool.Count; i < _poolSize; i++)
             {
                 PlayableTile _playableTile = Instantiate(playableTilePrefab).GetComponent<PlayableTile>();
+                _playableTile.transform.parent = playablePoolParent.transform;
                 TileToPlayablePool(_playableTile);
             }
         }
@@ -57,12 +61,13 @@ namespace Manager
         {
             if (backgroundPoolParent == null)
             {
-                backgroundPoolParent = CreateFolder("BackgroundPoolParent", transform);
+                backgroundPoolParent = boardManager.BackgroundTilesParent;
             }
             int _poolSize = ((int)gridSize.x) * ((int)gridSize.y);
             for (int i = backgroundTilesPool.Count; i < _poolSize; i++)
             {
                 BackgroundTile _backgroundTile = Instantiate(backgroundTilePrefab).GetComponent<BackgroundTile>();
+                _backgroundTile.transform.parent = backgroundPoolParent.transform;
                 TileToBackgroundPool(_backgroundTile);
             }
         }
@@ -91,7 +96,6 @@ namespace Manager
         // </summary>
         public void TileToPlayablePool(PlayableTile tile)
         {
-            tile.transform.parent = playablePoolParent.transform;
             playableTilesPool.Add(tile);
             tile.transform.gameObject.SetActive(false);
         }
@@ -120,7 +124,6 @@ namespace Manager
         // </summary>
         public void TileToBackgroundPool(BackgroundTile tile)
         {
-            tile.transform.parent = backgroundPoolParent.transform;
             backgroundTilesPool.Add(tile);
             tile.transform.gameObject.SetActive(false);
         }

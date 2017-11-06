@@ -8,7 +8,6 @@ namespace Tile
 {
     public class PlayableTile : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
     {
-
         BoardManager boardManager;
 
         TilePoolManager tilePoolManager;
@@ -32,6 +31,10 @@ namespace Tile
 
         [SerializeField]
         float fallSpeed = 8f;
+
+        int animationSelectId;
+        int animationCollectId;
+        int animationResetId;
 
         int tileType;
 
@@ -60,6 +63,10 @@ namespace Tile
             scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
             canvas.worldCamera = Camera.main;
             canvas.gameObject.SetActive(false);
+
+            animationSelectId = Animator.StringToHash("selected");
+            animationCollectId = Animator.StringToHash("collect");
+            animationResetId = Animator.StringToHash("reset");
         }
 
         // <summary>
@@ -86,7 +93,7 @@ namespace Tile
         // </summary>
         public void SelectTile()
         {
-            animator.SetBool("selected", true);
+            animator.SetBool(animationSelectId, true);
         }
 
         // <summary>
@@ -94,7 +101,7 @@ namespace Tile
         // </summary>
         public void DeselectTile()
         {
-            animator.SetBool("selected", false);
+            animator.SetBool(animationSelectId, false);
         }
 
         // <summary>
@@ -125,8 +132,8 @@ namespace Tile
         {
             scoreText.text = (scoreManager.MultiplierValue * 100).ToString();
             boxCollider.enabled = false;
-            animator.SetBool("selected", false);
-            animator.SetTrigger("collect");
+            animator.SetBool(animationSelectId, false);
+            animator.SetTrigger(animationCollectId);
             canvas.gameObject.SetActive(true);
         }
 
@@ -135,7 +142,7 @@ namespace Tile
         // </summary>
         public void CollectAnimationCompleted()
         {
-            animator.SetTrigger("reset");
+            animator.SetTrigger(animationResetId);
             boxCollider.enabled = true;
             canvas.gameObject.SetActive(false);
 

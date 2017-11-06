@@ -38,7 +38,24 @@ namespace Manager
         BackgroundTile previousBackgroundTile;
 
         GameObject activeTilesParent;
+        
+        public GameObject ActiveTilesParent
+        {
+            get
+            {
+                return activeTilesParent;
+            }
+        }
+
         GameObject backgroundTilesParent;
+
+        public GameObject BackgroundTilesParent
+        {
+            get
+            {
+                return backgroundTilesParent;
+            }
+        }
 
         int selectedTileType;
         Vector2 selectedGridTile;
@@ -66,6 +83,20 @@ namespace Manager
         // Helper List for when checking adjecent tiles
         List<Vector2> gridMath = new List<Vector2>(8) { new Vector2(1, 0), new Vector2(-1, 0), new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 1), new Vector2(1, -1), new Vector2(-1, 1), new Vector2(-1, -1) };
 
+        void Awake()
+        {
+            if (backgroundTilesParent == null)
+            {
+                backgroundTilesParent = tilePoolManager.CreateFolder("BackgroundTiles", transform);
+            }
+            if (activeTilesParent == null)
+            {
+                activeTilesParent = tilePoolManager.CreateFolder("ActiveTiles", transform);
+            }
+
+
+        }
+
         // <summary>
         // Initalize oard with provided settings
         // CreateStartLayout will be run until a board with at least one solution has been generated
@@ -88,11 +119,6 @@ namespace Manager
         // </summary>
         private void PrintBoard()
         {
-            if (backgroundTilesParent == null)
-            {
-                backgroundTilesParent = tilePoolManager.CreateFolder("BackgroundTiles", transform);
-            }
-
             activePlayableTiles = new PlayableTile[(int)gridSize.x, (int)gridSize.y];
             activeBackgroundTiles = new BackgroundTile[(int)gridSize.x, (int)gridSize.y];
 
@@ -101,7 +127,6 @@ namespace Manager
                 for (int x = 0; x < gridSize.x; x++)
                 {
                     BackgroundTile _backgroundTile = tilePoolManager.TileFromBackgroundPool();
-                    _backgroundTile.transform.parent = backgroundTilesParent.transform;
                     _backgroundTile.transform.localPosition = new Vector3(x * 10, y * 10, 15);
                     activeBackgroundTiles[x, y] = _backgroundTile;
                 }
@@ -159,10 +184,6 @@ namespace Manager
         private void AddPlayableTiles(bool isInitialization)
         {
             Vector3 _spawnPositon;
-            if (activeTilesParent == null)
-            {
-                activeTilesParent = tilePoolManager.CreateFolder("ActiveTiles", transform);
-            }
             for (int y = 0; y < gridSize.y; y++) 
             {
                 for (int x = 0; x < gridSize.x; x++)
@@ -181,7 +202,6 @@ namespace Manager
                             _newInt = Random.Range(0, tileTypes.Count);
                         }
                         PlayableTile _playableTile = tilePoolManager.TileFromPlayablePool();
-                        _playableTile.transform.parent = activeTilesParent.transform;
                         _playableTile.transform.localPosition = _spawnPositon;
                         activePlayableTiles[x, y] = _playableTile;
                         _playableTile.SetTileData(tileTypes[_newInt], _newInt, new Vector2(x, y));
