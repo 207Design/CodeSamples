@@ -5,7 +5,6 @@ namespace Tile
 {
     public class PathRenderer : MonoBehaviour
     {
-
         [SerializeField]
         LineRenderer lineRenderer;
 

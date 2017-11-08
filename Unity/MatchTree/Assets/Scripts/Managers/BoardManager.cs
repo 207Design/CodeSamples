@@ -106,9 +106,7 @@ namespace Manager
         {
             transform.position = new Vector3(0 - (gridSize.x * 5 - 5), 5 - (gridSize.y * 10) / 2, 10);
             PrintBoard();
-            while (!CreateStartLayout())
-            {
-            }
+            CreateStartLayout();
             AddPlayableTiles(true);
             canSelectTiles = true;
         }
@@ -137,7 +135,7 @@ namespace Manager
         // Create the layout that will be used when displaying the board initially
         // Return true if new layout has a solution, and false if it does not
         // </summary>
-        private bool CreateStartLayout()
+        private void CreateStartLayout()
         {
             tileLayoutAtStart = new int[(int)gridSize.x, (int)gridSize.y];
             for (int y = 0; y < gridSize.y; y++)
@@ -170,11 +168,33 @@ namespace Manager
                     }
                     if (_adjecentOfSameType >= 2)
                     {
-                        return true;
+                        return;
                     }
                 }
             }
-            return false;
+
+            // Create solution
+            List<Vector2> tilesToSolution = new List<Vector2>();
+            int _randomTileX = Random.Range(1, (int)gridSize.x - 1);
+            int _randomTileY = Random.Range(1, (int)gridSize.y - 1);
+
+            tilesToSolution.Add(new Vector2(_randomTileX, _randomTileY));
+            int _randomListIndex;
+            int _previousRandomListIndex = -1;
+
+            for (int i = 0; i < 2; i++)
+            {
+                if ((_randomListIndex = Random.Range(0, gridMath.Count)) != _previousRandomListIndex)
+                {
+                    tilesToSolution.Add(tilesToSolution[0] + gridMath[_randomListIndex]);
+                    _previousRandomListIndex = _randomListIndex;
+                }
+            }
+
+            int _newType = Random.Range(0, tileTypes.Count);
+            for (int i = 0; i < tilesToSolution.Count; i++) {
+                tileLayoutAtStart[(int)tilesToSolution[i].x, (int)tilesToSolution[i].x] = _newType;
+            }
         }
 
         // <summary>

@@ -48,6 +48,8 @@ namespace Manager
         public void Start()
         {
             SetStateMenu();
+
+            StartCoroutine(TestBoard());
         }
 
         // <summary>
@@ -123,5 +125,21 @@ namespace Manager
         {
             noAvailableSolution.SetActive(true);
         }
+
+
+        IEnumerator TestBoard()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(.1f);
+
+                OnStartButtonPressed();
+
+                yield return new WaitForSeconds(.1f);
+
+                OnMenuButtonPressed();
+            }
+        }
+
     }
 }

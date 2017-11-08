@@ -4,7 +4,6 @@ namespace Tile
 {
     public class BackgroundTile : MonoBehaviour
     {
-
         [SerializeField]
         MeshRenderer meshRenderer;
 
